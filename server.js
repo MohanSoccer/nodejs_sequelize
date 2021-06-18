@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const swaggerJsDoc = require("swagger-jsdoc");
+// const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 const apiErrorHandler = require('./response/api.error.handler');
-const student = require('./src/controller/student/student.controller');
+// const student = require('./src/controller/student/student.controller');
 
 const PORT = 3500;
 
@@ -19,11 +19,11 @@ const swaggerOptions = {
 
 app.use(express.json())
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
+// const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs))
+// app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs))
 
-app.use('/student',student)
+// app.use('/student',student)
 
 app.get('/',(req,res) => {
     res.json("API Running");
