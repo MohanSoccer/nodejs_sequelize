@@ -8,7 +8,7 @@ const PORT = 3500;
 app.use(express.json());
 
 app.get('/',(req,res) => {
-    res.json("API Running");
+    res.json("API new Running");
 })
 
 
