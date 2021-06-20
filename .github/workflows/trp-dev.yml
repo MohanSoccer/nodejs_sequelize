@@ -1,0 +1,36 @@
+name: Angular
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  frontEndJob:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Angular ${{matrix.node-version}}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{matrix.node-version}}
+    - run: npm i
+    - run: npm run build --if-present
+    - run: npm run test
+      working-directory: frontend
+  frontEndJob:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use node js ${{matrix.node-version}}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{matrix.node-version}}
+    - run: npm i
+      working-directory: backend
