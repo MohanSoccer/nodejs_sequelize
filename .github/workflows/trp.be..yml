@@ -1,0 +1,26 @@
+name: Node Js
+
+on:
+  workflow_run:
+    workflows: ["Angular Build"]
+    types:
+      - completed
+
+jobs:
+  Backend:
+    runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: ./backend
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node ${{matrix.node-version}}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{matrix.node-version}}
+    - run: npm i
+    - run: pm2 restart 1
