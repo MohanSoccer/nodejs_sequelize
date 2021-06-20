@@ -6,6 +6,7 @@ on:
 
 jobs:
   Frontend:
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [12.x]
@@ -16,4 +17,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{matrix.node-version}}
+    - run: npm i
+    - run: ng build
     - run: pm2 restart 0
